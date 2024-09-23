@@ -1,0 +1,11 @@
+
+.nav-bar{
+    background-color:beige;
+    display:flex;
+    justify-items:center;
+    margin:10px auto;
+    flex-direction: column;
+    border-radius:5px;
+    border-color: black;
+}
+
