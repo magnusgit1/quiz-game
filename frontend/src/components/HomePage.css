@@ -1,0 +1,27 @@
+
+.main{
+    background-color: rgb(139, 135, 221);
+    padding:40px;
+    width:80%;
+    height:10cm;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+    box-shadow: 0 -5px 40px black, 0 5px 40px black;
+    border-radius: 50px;
+}
+
+.welcome_section{
+    text-align:center;
+    margin-top: -100px;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+}
+.get_started_btns{
+    display:flex;
+    flex-direction: column;
+}
+button{
+    margin:5px;
+}
