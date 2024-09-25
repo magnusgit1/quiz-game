@@ -12,7 +12,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     def validate(self, attributes):
         if attributes['password'] != attributes['password2']:
-            raise serializers.ValidationError({"password": "Password fields do not match."})
+            raise serializers.ValidationError({"password": "Password fields must match."})
         
         return attributes 
     
@@ -25,4 +25,11 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         user.save()
 
         return user 
+    
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True)
+
+
+
     

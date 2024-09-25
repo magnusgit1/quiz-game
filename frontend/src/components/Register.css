@@ -1,0 +1,27 @@
+
+form{
+    font-family:Arial, Helvetica, sans-serif;
+    width:300px;
+    height:100px;
+    display:block;
+    align-items: center;
+    text-align: center;
+}
+
+form input{
+    width:100%;
+    margin:5px;
+    padding:5px;
+}
+
+form label{
+    float:left;
+    font-weight: bolder;
+}
+
+.form h2{
+    margin-top:-20px;
+    font-size:40px;
+    font-weight: 400;
+    font-style: italic;
+}
