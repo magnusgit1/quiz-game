@@ -76,39 +76,42 @@ const Register = ({onSignUp}) => {
     };
 
     return(
-        <div className='form'>
-            <h2>Create new Account</h2>
-            <form onSubmit={handleSubmit}>
-                <label>New Username</label>
-                <input 
-                    type="text"
-                    className='username_input' 
-                    name='username_input'
-                    value={userName}
-                    onChange={handleUserName}
-                    required
-                />
-                <label>Password</label>
-                <input 
-                    type="password"
-                    className='password_input'
-                    name='password_input'
-                    value={password}
-                    onChange={handlePassword}
-                    required
-                />
-                <label>Confirm Password</label>
-                <input 
-                    type="password"
-                    className='password_confirm'
-                    name='password_confirm'
-                    value={passwordConfirm}
-                    onChange={handlePasswordConfirm}
-                    required 
-                />
-                <button type="submit">Sign up</button>
-            </form>
-            <ToastContainer/>
+        <div className='main_register'>
+            <div className='form_register'>
+                <h2>Create new Account</h2>
+                <hr></hr>
+                <form onSubmit={handleSubmit}>
+                    <label>New Username</label>
+                    <input 
+                        type="text"
+                        className='username_input' 
+                        name='username_input'
+                        value={userName}
+                        onChange={handleUserName}
+                        required
+                    />
+                    <label>Password</label>
+                    <input 
+                        type="password"
+                        className='password_input'
+                        name='password_input'
+                        value={password}
+                        onChange={handlePassword}
+                        required
+                    />
+                    <label>Confirm Password</label>
+                    <input 
+                        type="password"
+                        className='password_confirm'
+                        name='password_confirm'
+                        value={passwordConfirm}
+                        onChange={handlePasswordConfirm}
+                        required 
+                    />
+                    <button type="submit">Sign up</button>
+                </form>
+                <ToastContainer/>
+            </div>
         </div>
     );
 }

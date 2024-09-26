@@ -1,13 +1,13 @@
 
 import './App.css'
 import {BrowserRouter as Router, Route, Routes, Link, Navigate} from 'react-router-dom';
-import HomePage from './components/HomePage';
-import Footer from './components/Footer';
-import LogIn from './components/LogIn';
-import About from './components/About';
-import HowToPlay from './components/HowToPlay';
-import Register from './components/Register';
-import GamePage from './components/GamePage';
+import HomePage from './components/HomePage/HomePage';
+import Footer from './components/Footer/Footer';
+import LogIn from './components/LogIn/LogIn';
+import About from './components/About/About';
+import HowToPlay from './components/HowToPlay/HowToPlay';
+import Register from './components/Register/Register';
+import GamePage from './components/GamePage/GamePage';
 
 
 function App() {

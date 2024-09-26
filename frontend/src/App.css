@@ -3,11 +3,22 @@ html, body {
     width:100%;
     margin:0;
     box-sizing:border-box;
-    background: linear-gradient(135deg, rgb(139, 135, 221) 25%, transparent 25%) -50px 0,
-    linear-gradient(225deg, rgb(139, 135, 221) 25%, transparent 25%) -50px 0,
-    linear-gradient(315deg, #e62525 25%, transparent 25%),
-    linear-gradient(45deg, #e62525 25%, transparent 25%);
-    background-size: 100px 100px;
+    
+        --s: 188px; /* control the size*/
+        --c1: #030202;
+        --c2: #430962;
+        --c3: #5d08c4;
+        
+        --_g: 0 120deg,#0000 0;
+        background:
+          conic-gradient(from    0deg at calc(500%/6) calc(100%/3),var(--c3) var(--_g)),
+          conic-gradient(from -120deg at calc(100%/6) calc(100%/3),var(--c2) var(--_g)),
+          conic-gradient(from  120deg at calc(100%/3) calc(500%/6),var(--c1) var(--_g)),
+          conic-gradient(from  120deg at calc(200%/3) calc(500%/6),var(--c1) var(--_g)),
+          conic-gradient(from -180deg at calc(100%/3) 50%,var(--c2)  60deg,var(--c1) var(--_g)),
+          conic-gradient(from   60deg at calc(200%/3) 50%,var(--c1)  60deg,var(--c3) var(--_g)),
+          conic-gradient(from  -60deg at 50% calc(100%/3),var(--c1) 120deg,var(--c2) 0 240deg,var(--c3) 0);
+        background-size: calc(var(--s)*1.732) var(--s);
 }
 #root{
     width:100%;
@@ -26,17 +37,18 @@ html, body {
     height:3.8cm;
     background-color:beige;
     display:flex;
-    justify-items:space-between;
-    align-items:left;
     flex-direction: column;
-    box-shadow: 2px 2px 5px black;
+    box-shadow: 0px 10px 15px black;
     padding-top:20px;
+}
+
+.topmenu nav{
+    margin-top:15px;
 }
 
 .topmenu-item{
     color:black;
     font-size:25px;
-    margin: 20px;
     margin-left:50px;
 }
 
@@ -48,7 +60,7 @@ html, body {
     display:flex;
     float:right;
     width:260px;
-    margin-top:-40px;
+    margin-top:-55px;
     mix-blend-mode: multiply;
 }
 
