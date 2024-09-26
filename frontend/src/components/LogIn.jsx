@@ -2,12 +2,16 @@
 import {useState} from 'react'
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './LogIn.css';
+import { useNavigate } from "react-router-dom";
 
-const LogIn = ({onLogIn}) => {
+const LogIn = ({onLogin}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     const handleUsername = (e) =>{
         setUsername(e.target.value);
@@ -40,11 +44,16 @@ const LogIn = ({onLogIn}) => {
             }
             const data = await response.json();
             console.log('Success:', data); // presents the successmsg to the console
-            if(isLoggedIn){
-                isLoggedIn(data);
+            toast.success("Login successful, welcome back!", {
+                onClose: () =>{
+                    navigate('/GamePage');
+                    resetInputFields();
+                    setError('');
+                }, autoClose: 1000,
+            });
+            if(onLogin){
+                onLogin(data);
             }
-            resetInputFields();
-            setError('');
         } catch(error){
             console.error('Error:', error);
             toast.error('Wrong username or password. Please try again');
@@ -55,7 +64,8 @@ const LogIn = ({onLogIn}) => {
 
     return (
         <div className='form'>
-            <h2>Log in</h2>
+            <h2>Login</h2>
+            <hr></hr>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input 
@@ -77,7 +87,7 @@ const LogIn = ({onLogIn}) => {
                     placeholder='password'
                     required
                 />
-                <button type="submit">Submit</button>
+                <button type="submit">Log in</button>
             </form>
             <ToastContainer/>
         </div>

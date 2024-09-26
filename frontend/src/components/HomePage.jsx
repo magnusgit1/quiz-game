@@ -20,7 +20,6 @@ const HomePage = () => {
     const handleLogIn = (data) => {
         console.log('User has logged in successfully:', data);
         setIsLoggedIn(true);
-        navigate('/GamePage');
     }
 
     return (
