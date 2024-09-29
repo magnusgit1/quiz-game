@@ -2,14 +2,18 @@ import './Register.css';
 import {useState} from 'react';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
+// Component for registration of a user account
+// User provides a username, a password and a password-confirmation through the input-fields
 const Register = ({onSignUp}) => {
 
-    // Create state-variables for username, password and password-confirmation
+    // Create state-variables for username, password and password-confirmation, as well as possible errors
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [passwordConfirm, setPasswordConfirm] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
 
     // event-handler functions
@@ -31,8 +35,17 @@ const Register = ({onSignUp}) => {
         setPasswordConfirm('');
     }
 
+
     // the functionality for the submit-button once a user
     // has filled in the form and tries to create the new account.
+
+    // 1. Prevent any submit-defaults
+    // 2. Check if the passwords match, if not, display error msg and refresh input-fields
+    // 3. if passwords match, create response to the backend-api with fetch
+    // 4. If the connection is successful, the user is created in the database, and a successmessage is displayed
+    // 5. If the connection is faulty, an error is displayed, and inputs refreshed
+    // 6. After succesfully creating the account, the user is redirected to the login-page
+
     const handleSubmit = async (event) =>{
         event.preventDefault();
         
@@ -40,40 +53,55 @@ const Register = ({onSignUp}) => {
         if(password !== passwordConfirm){
             setError('Passwords do not match');
             toast.error('Passwords do not match');
-        }
-        
-        try{
-            const response = await fetch('http://localhost:8000/api/register/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username:userName, 
-                    password:password, 
-                    password2:passwordConfirm
-                }),
-            });
-
-            if(!response.ok){ // if response is faulty then
-                throw new Error(`HTTP error; status: ${response.status}`);
-            }
-            const data = await response.json();
-            console.log('Success:', data); // presents the successmsg to the console
-
-            // Using prop to trigger the callback if provided through a parent component
-            if(onSignUp){
-                onSignUp(data);
-            }
             resetInputFields();
-            setError('');
+            return;
+        }
+        else{
+            try{
+                const response = await fetch('http://localhost:8000/api/register/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        username:userName, 
+                        password:password, 
+                        password2:passwordConfirm
+                    }),
+                });
 
-        } catch(error){
-            console.error('Error:', error);
-            toast.error('An error has occured during registration. Please try again.')
-            setError("An error has occured during registration. Please try again.");
+                if(!response.ok){ // if response is faulty then
+                    throw new Error(`HTTP error; status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('Success:', data); // presents the successmsg to the console
+
+                toast.success("Account Created!", {
+                    onClose: () =>{
+                        navigate('/login');
+                        resetInputFields();
+                        setError('');
+                    }, autoClose: 1000,
+                });
+
+                // Using prop to trigger the callback if provided through a parent component
+                if(onSignUp){
+                    onSignUp(data);
+                }
+                resetInputFields();
+                setError('');
+
+            } catch(error){
+                console.error('Error:', error);
+                toast.error('An error has occured during registration. Please try again.')
+                setError("An error has occured during registration. Please try again.");
+            }
         }
     };
+
+    // jsx with a form that utilizes the handle-submit function
+    // state-variables are dependant on the inputs' value and onChange.
+    // includes ToastContainer for styled message-display.
 
     return(
         <div className='main_register'>

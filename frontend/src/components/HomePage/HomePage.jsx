@@ -1,6 +1,8 @@
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 
+// Component for the front-page of the site, which presents options of playing offline, signing up or logging in.
+// Utilizing Navigate() to present the different interfaces in the home-page.
 const HomePage = () => {
 
     const navigate = useNavigate();

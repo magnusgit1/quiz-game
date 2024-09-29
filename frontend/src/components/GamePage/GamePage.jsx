@@ -3,9 +3,11 @@ import './GamePage.css'
 import QCard from './QCard.jsx';
 import Question from './Question.jsx';
 
+// component for the page where the game takes place
+// using Question- and QCard-components to represent the interface
+
 const GamePage = () => {
 
-    
 
     return(
         <div className='main_gamepage'>

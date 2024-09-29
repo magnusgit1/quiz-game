@@ -2,15 +2,19 @@
 import './QCard.css';
 import { useState } from 'react';
 
+// QCards represents the answer-options provided to the user
 const QCard = () => {
+
+    // Usestates for whether the option is chosen or not, and if the option is the correct answer
 
     const [isChosen, setIsChosen] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
     const value = 4;
 
+    // if already selected, deselect the option, else - select it
     const handleClick = () =>{
         if (isChosen){
-            return;
+            setIsChosen(false);
         }
         else{
             setIsChosen(true);

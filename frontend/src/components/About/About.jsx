@@ -1,6 +1,8 @@
 
 import './About.css';
 
+// component with general information about me as a dev, and the background for the app
+
 const About = () => {
     return (
         <div className='main_about'>

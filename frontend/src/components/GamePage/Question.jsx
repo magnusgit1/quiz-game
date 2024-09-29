@@ -2,6 +2,8 @@
 import './Question.css';
 import { useState } from 'react';
 
+// comp for the questions to be asked in the GamePage
+
 const Question = () => {
 
     const [value, setValue] = useState('');

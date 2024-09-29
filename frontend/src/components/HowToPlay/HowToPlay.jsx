@@ -1,6 +1,7 @@
 
 import './HowToPlay.css'
 
+// Component to display information about the game and its rules.
 const HowToPlay = () => {
     
     return(

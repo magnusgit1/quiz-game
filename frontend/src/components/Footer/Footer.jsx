@@ -1,8 +1,8 @@
 import './Footer.css';
 
+// component for the footer with ref to my github and email
 
 const Footer = () =>{
-
 
     return (
 

@@ -5,13 +5,17 @@ import 'react-toastify/dist/ReactToastify.css';
 import './LogIn.css';
 import { useNavigate } from "react-router-dom";
 
+// Component that displays the log-in interface
+// User is able to provide username and password into a form, and submit the input
 const LogIn = ({onLogin}) => {
 
+    // Usestates to hold the values of username, password, possible errors and initiating the navigate-module
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    // functions to handle events
     const handleUsername = (e) =>{
         setUsername(e.target.value);
     }
@@ -19,10 +23,21 @@ const LogIn = ({onLogin}) => {
         setPassword(e.target.value);
     }
 
+    // function that refreshes the input-fields once submitted
     const resetInputFields = () =>{
         setUsername('');
         setPassword('');
     }
+
+    // main functionality is implemented here
+    // once submitted, this function will be called, and the following actions occurs:
+    // 1. Prevent any default action connected to submitting a form
+    // 2. Using fetch to connect to the backend-api with POST
+    // 3. Translates the content using JSON
+    // 4. If the connection (response) is successful, the username and password matches and the user is authenticated
+    // 5. The success-msg is stored in the data const.
+    // 6. After the msg has been displayed, the user is redirected to the game-page.
+    // 7. If the user has provided faulty inputs, an error will be displayed, and the input-fields will be reset.
 
     const handleSubmit = async (event) =>{
         event.preventDefault();
@@ -61,6 +76,9 @@ const LogIn = ({onLogin}) => {
         }
     }
 
+    // jsx consists of a form which calls handleSubmit on submit, and changes the states of username and password
+    // through the inputs' onChange and value
+    // ToasterContainer is also utilized for displaying messages to the user.
     return (
         <div className='main_login'>
             <div className='form_login'>
