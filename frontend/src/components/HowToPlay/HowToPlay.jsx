@@ -7,7 +7,8 @@ const HowToPlay = () => {
     return(
         <div className='main_howtoplay'>
         <div className='main_init_howtoplay'>
-            <h1>How To play</h1>
+            <h1>How to play</h1>
+            <hr></hr>
             <p> 
                 The game is implemented in a way such that only registered players
                 will have their high-scored saved - and thus applicable to be a part of the leaderbord. <br></br> <br></br>

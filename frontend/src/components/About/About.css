@@ -1,6 +1,6 @@
 
 .main_about{
-    background-color: #300185;
+    background-color: #430962;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -14,4 +14,13 @@
     color:white;
     font-size:20px;
     padding:25px;
+}
+
+.main_about h1{
+    text-align:center;
+}
+
+.main_about hr{
+    margin-top: -10px;
+    margin-bottom:40px;
 }

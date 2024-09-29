@@ -10,7 +10,7 @@ const Question = () => {
 
     return(
         <>
-            <h1 className="q_h2">Hvor sta er Maiken?</h1>
+            <h1 className="q_h2">(question)?</h1>
         </>
     )
 }

@@ -1,6 +1,6 @@
 
 .main_howtoplay{
-    background-color: black;
+    background-color: #5d08c4;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -11,7 +11,16 @@
 
 .main_init_howtoplay{
     width:80%;
-    color:white;
+    color: white;
     font-size:20px;
     padding:25px;
+}
+
+.main_howtoplay h1{
+    text-align:center;
+}
+
+.main_howtoplay hr{
+    margin-top:-10px;
+    margin-bottom:40px;
 }

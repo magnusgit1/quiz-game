@@ -9,7 +9,7 @@ const QCard = () => {
 
     const [isChosen, setIsChosen] = useState(false);
     const [isCorrect, setIsCorrect] = useState(false);
-    const value = 4;
+    const value = 'option';
 
     // if already selected, deselect the option, else - select it
     const handleClick = () =>{

@@ -8,6 +8,7 @@ const About = () => {
         <div className='main_about'>
         <div className='main_init_about'>
             <h1>About</h1>
+            <hr></hr>
             <p>
                 I am a student at the University of Oslo, working towards my degree in Informatics and Computer Science.
                 In parallell with my degree, I am trying to apply my theoretical knowledge to create functional and real-life
