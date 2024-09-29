@@ -1,7 +1,7 @@
 
 import './HowToPlay.css'
 
-function HowToPlay() {
+const HowToPlay = () => {
     
     return(
         <div className='main_howtoplay'>

@@ -11,7 +11,6 @@ const LogIn = ({onLogin}) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     const handleUsername = (e) =>{
         setUsername(e.target.value);

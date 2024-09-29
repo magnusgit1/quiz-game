@@ -1,0 +1,17 @@
+
+
+.main_card{
+    width:100%;
+    height:3cm;
+    margin-bottom:30px;
+    background-color: rgb(139, 135, 221);
+    box-shadow: 0 -2px 10px black, 0 2px 10px black;;
+}
+.card_btn{
+    width:100%;
+    height:100%;
+    text-align:center;
+    font-size:30px;
+    font: black;
+    font-weight:bolder;
+}

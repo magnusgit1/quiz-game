@@ -13,7 +13,7 @@ const HomePage = () => {
                 <div className='get_started'>
                     <h2>How would you like to play?</h2>
                     <div className='get_started_btns'>
-                        <button className='offline_btn' onClick={() => navigate('/GamePage')}>
+                        <button className='offline_btn' onClick={() => navigate('/gamepage')}>
                             Play Offline
                         </button>
                         <button className='sign_in_btn' onClick={() => navigate('/register')}>

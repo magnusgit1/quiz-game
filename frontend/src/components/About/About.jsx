@@ -1,7 +1,7 @@
 
 import './About.css';
 
-function About() {
+const About = () => {
     return (
         <div className='main_about'>
         <div className='main_init_about'>

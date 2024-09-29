@@ -1,0 +1,26 @@
+
+.main_gamepage{
+    background-color: rgb(139, 135, 221);
+    padding:40px;
+    width:80%;
+    height:15cm;
+    align-items: center;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 -5px 40px black, 0 5px 40px black;
+    border-radius: 50px;
+}
+
+.card_container{
+    margin:20px;
+    width:50%;
+}
+
+.cards{
+    width:100%;
+    display:flex;
+    flex-direction: row;
+}
+
+

@@ -1,11 +1,26 @@
 
 import './GamePage.css'
+import QCard from './QCard.jsx';
+import Question from './Question.jsx';
 
-function GamePage() {
+const GamePage = () => {
+
+    
 
     return(
-        <div className='main_gp'>
-            <h1>Here comes the actual game</h1>
+        <div className='main_gamepage'>
+            <h2><Question/></h2>
+            <div className='cards'>
+                <div className="card_container">
+                    <QCard/>
+                    <QCard/>
+                </div>
+                <div className="card_container">
+                    <QCard/>
+                    <QCard/>
+                </div>
+            </div>
+            <button onClick={() => {handleLockIn}}>Lock Answer</button>
         </div>
     );
 }
