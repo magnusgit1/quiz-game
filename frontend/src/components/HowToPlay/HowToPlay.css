@@ -1,10 +1,11 @@
 
 .main_howtoplay{
-    background-color: #5d08c4;
+    background-color: #430962;
     display:flex;
     align-items: center;
     justify-content: center;
-    margin:20px;
+    margin:40px;
+    margin-top:-10px;
     border-radius: 30px;
     box-shadow: 0 -5px 40px black, 0 5px 40px black;
 }

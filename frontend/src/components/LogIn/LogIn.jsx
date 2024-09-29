@@ -60,7 +60,7 @@ const LogIn = ({onLogin}) => {
             console.log('Success:', data); // presents the successmsg to the console
             toast.success("Login successful, welcome back!", {
                 onClose: () =>{
-                    navigate('/GamePage');
+                    navigate('/categorypage');
                     resetInputFields();
                     setError('');
                 }, autoClose: 1000,

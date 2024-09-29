@@ -8,6 +8,8 @@ import About from './components/About/About';
 import HowToPlay from './components/HowToPlay/HowToPlay';
 import Register from './components/Register/Register';
 import GamePage from './components/GamePage/GamePage';
+import CategoryPage from './components/GamePage/CategoryPage';
+import DifficultyPage from './components/GamePage/DifficultyPage';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
             <Route path='/about' element={<About/>} />
             <Route path='/register' element={<Register/>} />
             <Route path='/how-to-play' element={<HowToPlay/>} />
+            <Route path='/categorypage' element={<CategoryPage/>} />
+            <Route path='/difficultypage' element={<DifficultyPage/>} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>
