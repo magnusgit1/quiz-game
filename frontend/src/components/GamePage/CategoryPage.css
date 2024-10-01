@@ -1,0 +1,41 @@
+
+.main_categorypage{
+    background-color: rgb(139, 135, 221);
+    padding:40px;
+    padding-top:10px;
+    padding-bottom:10px;
+    width:80%;
+    height:10cm;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 -5px 40px black, 0 5px 40px black;
+    border-radius: 50px;
+}
+
+.main_categorypage hr{
+    border:0;
+    width:90%;
+    height:2px;
+    background:black;
+    margin-bottom:20px;
+    margin-top:-5px;
+}
+
+.main_categorypage h1{
+    margin-top:-10px;
+}
+
+.category_buttons{
+    width:90%;
+    display:flex;
+    align-items:center;
+}
+
+.cat_btn{
+    width:90%;
+    height:80px;
+    margin:10px;
+    margin-top:20px;
+}

@@ -23,6 +23,10 @@ const LogIn = ({onLogin}) => {
         setPassword(e.target.value);
     }
 
+    const handleReturn = (e) =>{
+        navigate("/homepage");
+    }
+
     // function that refreshes the input-fields once submitted
     const resetInputFields = () =>{
         setUsername('');
@@ -103,8 +107,11 @@ const LogIn = ({onLogin}) => {
                         onChange={handlePassword}
                         required
                     />
-                    <button type="submit">Log in</button>
+                    <div className="login_btns">
+                        <button type="submit">Log in</button>
+                    </div>
                 </form>
+                <button className="return_button" onClick={handleReturn}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTui8SEhHoRANPBhhYMh2HmA8ti2WFrhwkN13SVwIUv_-7jWbh6ghRZPKbXRFUnUEAsjrg&usqp=CAU"/></button>
                 <ToastContainer/>
             </div>
         </div>

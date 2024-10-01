@@ -35,6 +35,10 @@ const Register = ({onSignUp}) => {
         setPasswordConfirm('');
     }
 
+    const handleReturn = () =>{
+        navigate("/homepage");
+    }
+
 
     // the functionality for the submit-button once a user
     // has filled in the form and tries to create the new account.
@@ -136,8 +140,11 @@ const Register = ({onSignUp}) => {
                         onChange={handlePasswordConfirm}
                         required 
                     />
-                    <button type="submit">Sign up</button>
+                    <div className="reg_btns">
+                        <button type="submit">Sign up</button>
+                    </div>
                 </form>
+                <button className="return_button" onClick={handleReturn}><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTui8SEhHoRANPBhhYMh2HmA8ti2WFrhwkN13SVwIUv_-7jWbh6ghRZPKbXRFUnUEAsjrg&usqp=CAU"/></button>
                 <ToastContainer/>
             </div>
         </div>

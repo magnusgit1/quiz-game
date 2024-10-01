@@ -39,8 +39,8 @@
 .main_login{
     background-color: rgb(139, 135, 221);
     padding:40px;
-    width:80%;
-    height:10cm;
+    width:60%;
+    height:9cm;
     align-items: center;
     display:flex;
     justify-content: center;
@@ -52,4 +52,25 @@
     margin-top:20px;
     border-radius:15px;
     font-weight: bolder;
+}
+
+.form_login img{
+    width:26px;
+    height:23px;
+}
+
+.return_button{
+    float:left;
+    align-items:center;
+    display:flex;
+    justify-content: center;
+    mix-blend-mode: multiply;
+}
+
+.login_btns{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    justify-content: center;
 }

@@ -39,7 +39,8 @@
 .main_register{
     background-color: rgb(139, 135, 221);
     padding:40px;
-    width:80%;
+    padding-bottom:60px;
+    width:60%;
     height:10cm;
     align-items: center;
     display:flex;
@@ -52,4 +53,25 @@
     margin-top:20px;
     border-radius:15px;
     font-weight:bolder;
+}
+
+.form_register img{
+    width:26px;
+    height:23px;
+}
+
+.return_button{
+    float:left;
+    align-items:center;
+    display:flex;
+    justify-content: center;
+    mix-blend-mode: multiply;
+}
+
+.reg_btns{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    justify-content: center;
 }
