@@ -7,12 +7,12 @@ import './DifficultyPage.css';
 const DifficultyPage = () => {
 
     const { state } = useLocation();
-    const { category } = state;
+    const { chosenCategory } = state;
     const navigate = useNavigate();
     const difficulties = ['Easy', 'Medium', 'Hard'];
 
     const handleDifficultyClick = (difficulty) =>{
-        navigate('/gamepage', { state: {category, difficulty} });
+        navigate('/gamepage', { state: {category:chosenCategory, difficulty} });
     };
 
     return (

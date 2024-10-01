@@ -13,7 +13,7 @@ const CategoryPage = () => {
 
     const handleCategoryClick = (category) => {
         setChosenCategory(category);
-        navigate('/difficultypage', { state: { chosenCategory } });
+        navigate('/difficultypage', { state: { chosenCategory:category } });
     };
 
     // create the category-buttons through .map
