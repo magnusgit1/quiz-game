@@ -1,14 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import QCard from './QCard';
 import './GamePage.css';
 import { shuffleArray } from './utils';
+import TimerBar from './TimerBar';
 
 const GamePage = () => {
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-    const [timer, setTimer] = useState(10);
     const [score, setScore] = useState(0);
+    const isTransitioning = useRef(false);
 
     const { state } = useLocation();
     const { category, difficulty } = state || {};
@@ -53,30 +54,32 @@ const GamePage = () => {
         fetchQuestions();
     }, [category, difficulty]);
 
-    useEffect(() => {
-        if(timer > 0){
-            const countdown = setTimeout(() => setTimer(timer-1), 1000);
-            return () => clearTimeout(countdown);
+    const handleTimeUp = () => {
+        if(isTransitioning.current) return;
+        isTransitioning.current = true;
+        if(currentQuestionIndex < questions.length - 1){
+            setCurrentQuestionIndex(prev => prev + 1);
+        } else{
+            // End of game
+            navigate('/endpage', { state: {score:score}});
         }
-        // If the timer goes down to 0, go to next question automatically
-        else if(currentQuestionIndex < questions.length - 1){
-            setCurrentQuestionIndex(currentQuestionIndex+1);
-            setTimer(10);
-        } else {
-            // End of game 
-        }
-    }, [timer, currentQuestionIndex, questions.length]);
+        isTransitioning.current = false;
+    };
 
     const handleAnswerClick = (answer) => {
+        if(isTransitioning.current) return;
+        isTransitioning.current = true;
         if(answer.isCorrect){
-            setScore(score + 5 + (timer));
+            setScore(score + 5);
         }
-        if(currentQuestionIndex < questions.length - 1) {
-            setCurrentQuestionIndex(currentQuestionIndex +1);
-            setTimer(10)        
-        } else{
-            navigate('/endpage', { state: { score: score } });
-        }
+        setTimeout(() => {
+            if(currentQuestionIndex < questions.length - 1){
+                setCurrentQuestionIndex(prevIndex => prevIndex + 1)
+            } else {
+                navigate('/endpage', { state: {score:score}});
+            }
+            isTransitioning.current = false;
+        }, 1000);
     };
 
     // If questions are still loading, display a loading screen
@@ -84,11 +87,11 @@ const GamePage = () => {
 
     return(
         <div className="main_gamepage">
+            <TimerBar key={currentQuestionIndex} duration={15} onTimeUp={handleTimeUp} />
             <div className="qcard_container">
                 <QCard 
                     question={questions[currentQuestionIndex].text}
                     answers={questions[currentQuestionIndex].choices}
-                    timer={timer}
                     onAnswerSelected={handleAnswerClick}
                 />
             </div>

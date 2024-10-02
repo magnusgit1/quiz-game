@@ -1,18 +1,33 @@
 
 import './QCard.css';
+import { useState } from 'react';
 
-const QCard = ({ question, answers, timer, onAnswerSelected }) => {
+const QCard = ({ question, answers, onAnswerSelected }) => {
+    
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
+
+    const handleAnswerClick = (answer) =>{
+        setSelectedAnswer(answer);
+        onAnswerSelected(answer);
+        setTimeout(() => {
+            setSelectedAnswer(null);
+        }, 1000);
+    };
 
     return(
         <div className="main_qcard">
             <h2>{question}</h2>
             <hr></hr>
-            <div className="qcard">
-                {answers.map((answer, index) =>(
-                    <button className="choice_btn" key={index} onClick={() => onAnswerSelected(answer)}>{answer.text}</button>
+            <div className="answers-container">
+                {answers.map(answer =>(
+                    <button 
+                        key={answer.text}
+                        className={`choice_btn ${selectedAnswer === answer ? (answer.isCorrect ? 'correct' : 'incorrect') : ''}`}
+                        onClick={() => handleAnswerClick(answer)}
+                        disabled={selectedAnswer !== null}
+                        >{answer.text}</button>
                 ))}
             </div>
-            <p>Timer: {timer}</p>
         </div>
     );
 };
