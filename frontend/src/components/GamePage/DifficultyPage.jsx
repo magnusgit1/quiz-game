@@ -9,7 +9,7 @@ const DifficultyPage = () => {
     const { state } = useLocation();
     const { chosenCategory } = state;
     const navigate = useNavigate();
-    const difficulties = ['Easy', 'Medium', 'Hard'];
+    const difficulties = ['easy', 'medium', 'hard'];
 
     const handleDifficultyClick = (difficulty) =>{
         navigate('/gamepage', { state: {category:chosenCategory, difficulty} });

@@ -1,37 +1,55 @@
-
-// component for the page where the game takes place
-// uses QCard-components which represents both the questions and the answers
-
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import QCard from './QCard';
 
 const GamePage = () => {
-
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [timer, setTimer] = useState(10);
     const [score, setScore] = useState(0);
 
     const { state } = useLocation();
-    const { category, difficulty } = state;
+    const { category, difficulty } = state || {};
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Retrieve questions and answers from server based on diff. and cat.
-        axios.get('/api/questions/', { params: { category, difficulty }})
-            .then(response =>{
-                const formattedQuestions = response.data.map(item => ({
-                    text: item.question_text,
-                    correctAnswer: item.correct_answer,
-                    answerAlternatives: [item.correct_answer, ...item.incorrect_answers]
-                }));
-                setQuestions(formattedQuestions);
-            })
-            .catch(error =>{
-                console.error('Error fetching questions from api', error);
-            });
+        if (!category || !difficulty) {
+            console.error('Category or difficulty is missing');
+            return;
+        }
+        // Retrieve questions and answers from server based on difficulty and category
+        console.log(`Fetching questions with category: ${category} and difficulty: ${difficulty}`);
+        const fetchQuestions = async () => {
+            try {
+                const response = await fetch(`http://localhost:8000/api/questions/?category=${category}&difficulty=${difficulty}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error; status: ${response.status}`);
+                }
+                const data = await response.json();
+                console.log('API response:', data);
+                
+                if (Array.isArray(data)) {
+                    const formattedQuestions = data.map(item => {
+                        // Sjekk for å sikre at incorrect_answer er en array
+                        const choices = item.choices.map(choice => ({
+                            text: choice.choice_text,
+                            isCorrect: choice.is_correct
+                        }));
+                        return{
+                            text: item.question_text,
+                            choices: choices
+                        };
+                    });
+                    setQuestions(formattedQuestions);
+                } else {
+                    console.error('Unexpected response format:', data);
+                }
+            } catch (error) {
+                console.error('Error fetching questions from API', error);
+            }
+        };
+
+        fetchQuestions();
     }, [category, difficulty]);
 
     useEffect(() => {
@@ -54,9 +72,9 @@ const GamePage = () => {
         }
         if(currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex +1);
-            setTimer(10);
+            setTimer(10)        
         } else{
-            navigate('/endpage');
+            navigate('/endpage', { state: { score: score } });
         }
     };
 
@@ -67,7 +85,7 @@ const GamePage = () => {
         <div className="main_gamepage">
             <QCard 
                 question={questions[currentQuestionIndex].text}
-                answers={questions[currentQuestionIndex].answerAlternatives}
+                answers={questions[currentQuestionIndex].choices}
                 timer={timer}
                 onAnswerSelected={handleAnswerClick}
             />
