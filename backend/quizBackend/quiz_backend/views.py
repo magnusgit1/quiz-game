@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserRegistrationSerializer
-from .serializers import LoginSerializer
+from .serializers import UserRegistrationSerializer, LoginSerializer, QuestionSerializer
 from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token 
+from .models import Question
 import logging
 
 # Set up logging
@@ -39,3 +39,26 @@ class LoginView(APIView):
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class QuestionListAPI(generics.ListAPIView):
+    serializer_class = QuestionSerializer
+
+    def get_queryset(self):
+        category = self.request.query_params.get('category')
+        difficulty = self.request.query_params.get('difficulty')
+        qs = Question.objects.all()
+
+        if category:
+            qs = qs.filter(category=category)
+
+        if difficulty:
+            qs = qs.filter(difficulty=difficulty)
+        
+        return qs
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        if not queryset.exists():
+            return Response({"detail": "No questions found for the specified category and difficulty"}, status=status.HTTP_404_NOT_FOUND)
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)

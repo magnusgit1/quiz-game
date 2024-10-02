@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User 
 from django.contrib.auth.password_validation import validate_password
+from .models import Question, Choice
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -30,6 +31,16 @@ class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(write_only=True)
     password = serializers.CharField(write_only=True)
 
+class ChoiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Choice 
+        fields = ['id', 'choice_text', 'is_correct']
 
+class QuestionSerializer(serializers.ModelSerializer):
+    choices = ChoiceSerializer(many=True)
+    
+    class Meta:
+        model = Question 
+        fields = ['id', 'question_text', 'difficulty', 'choices']
 
     

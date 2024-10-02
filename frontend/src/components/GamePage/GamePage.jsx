@@ -20,7 +20,7 @@ const GamePage = () => {
 
     useEffect(() => {
         // Retrieve questions and answers from server based on diff. and cat.
-        axios.get('api/questions', { params: { category, difficulty }})
+        axios.get('/api/questions/', { params: { category, difficulty }})
             .then(response =>{
                 const formattedQuestions = response.data.map(item => ({
                     text: item.question_text,
