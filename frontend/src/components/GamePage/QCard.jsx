@@ -6,11 +6,12 @@ const QCard = ({ question, answers, timer, onAnswerSelected }) => {
     return(
         <div className="main_qcard">
             <h2>{question}</h2>
-            <ul>
+            <hr></hr>
+            <div className="qcard">
                 {answers.map((answer, index) =>(
-                    <li key={index} onClick={() => onAnswerSelected(answer)}>{answer.text}</li>
+                    <button className="choice_btn" key={index} onClick={() => onAnswerSelected(answer)}>{answer.text}</button>
                 ))}
-            </ul>
+            </div>
             <p>Timer: {timer}</p>
         </div>
     );

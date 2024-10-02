@@ -9,7 +9,7 @@ const CategoryPage = () => {
     // state for chosen category will be sent forward to the difficulty-page
     const [chosenCategory, setChosenCategory] = useState('');
     const navigate = useNavigate();
-    const categories = ['Math', 'Geography', 'General Knowledge', 'Randomized'];
+    const categories = ['Science: Mathematics', 'Geography', 'General Knowledge'];
 
     const handleCategoryClick = (category) => {
         setChosenCategory(category);

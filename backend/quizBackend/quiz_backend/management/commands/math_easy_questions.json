@@ -1,0 +1,143 @@
+
+[
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 5 + 3?",
+        "correct_answer": "8",
+        "incorrect_answers": ["7", "9", "6"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 12 - 4?",
+        "correct_answer": "8",
+        "incorrect_answers": ["6", "7", "9"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 3 * 3?",
+        "correct_answer": "9",
+        "incorrect_answers": ["6", "8", "12"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 16 / 4?",
+        "correct_answer": "4",
+        "incorrect_answers": ["2", "3", "5"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the square root of 25?",
+        "correct_answer": "5",
+        "incorrect_answers": ["4", "6", "7"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 7 + 8?",
+        "correct_answer": "15",
+        "incorrect_answers": ["14", "16", "13"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 10 - 2?",
+        "correct_answer": "8",
+        "incorrect_answers": ["7", "6", "9"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 2^3?",
+        "correct_answer": "8",
+        "incorrect_answers": ["6", "9", "10"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 25 * 1?",
+        "correct_answer": "25",
+        "incorrect_answers": ["20", "30", "15"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 100 / 10?",
+        "correct_answer": "10",
+        "incorrect_answers": ["9", "11", "12"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the result of 3 + 2 * 2?",
+        "correct_answer": "7",
+        "incorrect_answers": ["10", "9", "8"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 11 + 11?",
+        "correct_answer": "22",
+        "incorrect_answers": ["21", "23", "20"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the result of 9 - 3 + 1?",
+        "correct_answer": "7",
+        "incorrect_answers": ["6", "8", "5"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the product of 1 * 2 * 3?",
+        "correct_answer": "6",
+        "incorrect_answers": ["7", "8", "9"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 15 / 3?",
+        "correct_answer": "5",
+        "incorrect_answers": ["4", "6", "7"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the cube of 2?",
+        "correct_answer": "8",
+        "incorrect_answers": ["4", "6", "10"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 14 - 5?",
+        "correct_answer": "9",
+        "incorrect_answers": ["8", "10", "11"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is 50% of 100?",
+        "correct_answer": "50",
+        "incorrect_answers": ["40", "60", "100"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the square root of 81?",
+        "correct_answer": "9",
+        "incorrect_answers": ["8", "7", "10"]
+    },
+    {
+        "category": "Science: Mathematics",
+        "difficulty": "easy",
+        "question_text": "What is the sum of 8 and 12?",
+        "correct_answer": "20",
+        "incorrect_answers": ["19", "18", "21"]
+    }
+]

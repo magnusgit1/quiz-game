@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import QCard from './QCard';
+import './GamePage.css';
+import { shuffleArray } from './utils';
 
 const GamePage = () => {
     const [questions, setQuestions] = useState([]);
@@ -29,18 +31,17 @@ const GamePage = () => {
                 console.log('API response:', data);
                 
                 if (Array.isArray(data)) {
-                    const formattedQuestions = data.map(item => {
-                        // Sjekk for å sikre at incorrect_answer er en array
-                        const choices = item.choices.map(choice => ({
+                    const formattedQuestions = data.map(item => ({
+                        text: item.question_text,
+                        // Shuffling the array using shuffleArray to avoid correct answer always being first
+                        choices: shuffleArray(item.choices.map(choice => ({
                             text: choice.choice_text,
                             isCorrect: choice.is_correct
-                        }));
-                        return{
-                            text: item.question_text,
-                            choices: choices
-                        };
-                    });
-                    setQuestions(formattedQuestions);
+                        })))
+                    }));
+                    const validQuestions = formattedQuestions.filter(q => q.choices && q.choices.length > 0);
+                    const randomQuestions = shuffleArray(validQuestions).slice(0, 10);
+                    setQuestions(randomQuestions);
                 } else {
                     console.error('Unexpected response format:', data);
                 }
@@ -67,7 +68,7 @@ const GamePage = () => {
     }, [timer, currentQuestionIndex, questions.length]);
 
     const handleAnswerClick = (answer) => {
-        if(answer === questions[currentQuestionIndex].correctAnswer){
+        if(answer.isCorrect){
             setScore(score + 5 + (timer));
         }
         if(currentQuestionIndex < questions.length - 1) {
@@ -83,13 +84,17 @@ const GamePage = () => {
 
     return(
         <div className="main_gamepage">
-            <QCard 
-                question={questions[currentQuestionIndex].text}
-                answers={questions[currentQuestionIndex].choices}
-                timer={timer}
-                onAnswerSelected={handleAnswerClick}
-            />
-            <p>Score: {score}</p>
+            <div className="qcard_container">
+                <QCard 
+                    question={questions[currentQuestionIndex].text}
+                    answers={questions[currentQuestionIndex].choices}
+                    timer={timer}
+                    onAnswerSelected={handleAnswerClick}
+                />
+            </div>
+            <div className="scoreboard">
+                <p>Score: {score}</p>
+            </div>
         </div>
     );
 };
