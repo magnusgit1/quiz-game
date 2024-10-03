@@ -36,7 +36,7 @@ const HomePage = () => {
                     <h2>How would you like to play?</h2>
                     <div className='get_started_btns'>
                         <button className='offline_btn' onClick={() => navigate('/categorypage')}>
-                            Play Offline
+                            {isLoggedIn ? 'Play' : 'Play offline'}
                         </button>
                         <button className='sign_in_btn' onClick={() => navigate('/register')}>
                             Sign Up

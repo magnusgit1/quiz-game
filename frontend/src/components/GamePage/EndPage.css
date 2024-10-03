@@ -1,0 +1,88 @@
+
+
+.main_endpage {
+    background: linear-gradient(135deg, rgb(139, 135, 221), rgb(109, 183, 244), rgb(114, 231, 234));
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    width: 80%;
+    height: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 -5px 40px rgba(0, 0, 0, 0.5), 0 5px 40px rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.main_endpage hr {
+    border: 0;
+    width: 90%;
+    height: 2px;
+    background: black;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    animation: hrAnim 1.5s ease-in-out;
+}
+
+@keyframes hrAnim {
+    from {
+        width: 0;
+    }
+    to {
+        width: 90%;
+    }
+}
+
+
+.main_endpage p {
+    font-size: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #f7f7f7;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.main_endpage button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    color: black;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.main_endpage button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}

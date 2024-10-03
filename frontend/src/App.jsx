@@ -10,6 +10,7 @@ import Register from './components/Register/Register';
 import GamePage from './components/GamePage/GamePage';
 import CategoryPage from './components/GamePage/CategoryPage';
 import DifficultyPage from './components/GamePage/DifficultyPage';
+import EndPage from './components/GamePage/EndPage';
 import { AuthProvider } from './components/AuthContext';
 
 
@@ -43,6 +44,7 @@ function App() {
               <Route path='/how-to-play' element={<HowToPlay/>} />
               <Route path='/categorypage' element={<CategoryPage/>} />
               <Route path='/difficultypage' element={<DifficultyPage/>} />
+              <Route path='/endpage' element={<EndPage/>} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>
