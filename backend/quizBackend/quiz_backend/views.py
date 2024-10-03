@@ -6,6 +6,7 @@ from .serializers import UserRegistrationSerializer, LoginSerializer, QuestionSe
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token 
+from rest_framework.authentication import TokenAuthentication
 from .models import Question
 import logging
 
@@ -42,6 +43,7 @@ class LoginView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class LogoutView(APIView):
+    authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
 
     def post(self, request):

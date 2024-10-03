@@ -2,6 +2,8 @@ import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../AuthContext';
 import { useContext } from "react";
+import { ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 // Component for the front-page of the site, which presents options of playing offline, signing up or logging in.
@@ -15,7 +17,11 @@ const HomePage = () => {
         if(isLoggedIn){
             console.log(isLoggedIn)
             await logOut();
-            navigate('/');
+            toast.success("You are now logged out", {
+                onClose: () =>{
+                    navigate('/');
+                }, autoClose: 1000,
+            });
         }
     };
 
@@ -44,6 +50,7 @@ const HomePage = () => {
                                 Login
                             </button>
                         }
+                    <ToastContainer/>
                     </div>
                 </div>
             </div>
