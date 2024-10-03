@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import UserRegistrationSerializer, LoginSerializer, QuestionSerializer
 from django.contrib.auth import authenticate
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token 
 from .models import Question
 import logging
@@ -40,6 +41,18 @@ class LoginView(APIView):
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        try:
+            #Remove token from user
+            request.user.auth_token.delete()
+            return Response(status=status.HTTP_200_OK)
+        except Token.DoesNotExist:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
 class QuestionListAPI(generics.ListAPIView):
     serializer_class = QuestionSerializer
 

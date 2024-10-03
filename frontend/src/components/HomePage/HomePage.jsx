@@ -1,12 +1,25 @@
 import "./HomePage.css";
 import { useNavigate } from "react-router-dom";
+import AuthContext from '../AuthContext';
+import { useContext } from "react";
 
 
 // Component for the front-page of the site, which presents options of playing offline, signing up or logging in.
 // Utilizing Navigate() to present the different interfaces in the home-page.
 const HomePage = () => {
 
+    const { isLoggedIn, logOut, logIn } = useContext(AuthContext);
     const navigate = useNavigate();
+
+    const handleLogOut = async () =>{
+        if(isLoggedIn){
+            console.log(isLoggedIn)
+            await logOut();
+            navigate('/');
+        }
+    };
+
+    console.log('Is logged in:', isLoggedIn);
 
     return (
         <div className='main_homepage'>
@@ -22,9 +35,15 @@ const HomePage = () => {
                         <button className='sign_in_btn' onClick={() => navigate('/register')}>
                             Sign Up
                         </button>
-                        <button className='login_btn' onClick={()=> navigate('/login')}>
-                            Login
-                        </button>
+                        {isLoggedIn ? 
+                            <button className='login_btn' onClick={handleLogOut}>
+                                Logout
+                            </button>
+                            :
+                            <button className='login_btn' onClick={()=> navigate('/login')}>
+                                Login
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

@@ -7,22 +7,34 @@ export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const userLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-        setIsLoggedIn(userLoggedIn);
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token);
     }, []);
 
-    const logIn = () => {
-        setIsLoggedIn(true);
-        localStorage.setItem('isLoggedIn', 'true');
+    const logOut = async () => {
+        const token = localStorage.getItem('token');
+        console.log('Logging out with the token:', token);
+        try{
+            await fetch('http://localhost:8000/api/logout/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Token ${token}`
+                },
+            });
+            localStorage.removeItem('token');
+            setIsLoggedIn(false);
+        } catch(error){
+            console.error('Logout failed', error);
+        }
     };
 
-    const logOut = () =>{
-        setIsLoggedIn(false);
-        localStorage.setItem('isLoggedIn', 'false');
-    };
+    const logIn = () =>{
+        setIsLoggedIn(true);
+    }
 
     return(
-        <AuthContext.Provider value={{ isLoggedIn, logIn, logOut }}>
+        <AuthContext.Provider value={{ isLoggedIn, logOut, logIn }}>
             {children}
         </AuthContext.Provider>
     );
