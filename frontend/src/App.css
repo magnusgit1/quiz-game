@@ -59,8 +59,8 @@ html, body {
 .topmenu img{
     display:flex;
     float:right;
-    width:260px;
-    margin-top:-55px;
+    width:15%;
+    margin-top:-40px;
     mix-blend-mode: multiply;
 }
 

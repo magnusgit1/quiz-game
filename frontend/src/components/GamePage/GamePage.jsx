@@ -10,6 +10,7 @@ const GamePage = () => {
     const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
+    const [isQuizFinished, setIsQuizFinished] = useState(false);
     const isTransitioning = useRef(false);
     const timerBarRef = useRef(null);
 
@@ -32,7 +33,7 @@ const GamePage = () => {
                 }
                 const data = await response.json();
                 console.log('API response:', data);
-                
+
                 if (Array.isArray(data)) {
                     const formattedQuestions = data.map(item => ({
                         text: item.question_text,
@@ -55,13 +56,19 @@ const GamePage = () => {
         fetchQuestions();
     }, [category, difficulty]);
 
+    useEffect(() => {
+        if (isQuizFinished) {
+            navigate('/endpage', { state: { score, category, difficulty } });
+        }
+    }, [isQuizFinished, navigate, score, category, difficulty]);
+
     const handleTimeUp = () => {
         if (isTransitioning.current) return;
         isTransitioning.current = true;
         if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
         } else {
-            navigate('/endpage', { state: { score, category }});
+            setIsQuizFinished(true);
         }
         isTransitioning.current = false;
     };
@@ -73,14 +80,15 @@ const GamePage = () => {
         if (answer.isCorrect) {
             const remainingTime = timerBarRef.current.getTimeLeft(); // Hent resterende tid
             const totalScore = 5 + remainingTime; // 5 poeng for riktig svar + poeng for resterende tid
-            setScore(score + totalScore);
+            setScore(prevScore => prevScore + totalScore); // Oppdater score
         }
 
+        // Vent 1 sekund før du går til neste spørsmål eller naviger til endpage
         setTimeout(() => {
             if (currentQuestionIndex < questions.length - 1) {
                 setCurrentQuestionIndex(prevIndex => prevIndex + 1);
             } else {
-                navigate('/endpage', { state: { score, category }});
+                setIsQuizFinished(true);
             }
             isTransitioning.current = false;
         }, 1000);

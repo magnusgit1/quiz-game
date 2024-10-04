@@ -24,6 +24,7 @@ const DifficultyPage = () => {
                     <button className='diff_btn' key={diff} onClick={() => handleDifficultyClick(diff)}>{diff}</button>
                 ))}
             </div>
+            <p>Only results from hard-difficulty can be registered to the leaderboard</p>
         </div>
     )
 }
