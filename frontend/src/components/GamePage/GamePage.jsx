@@ -1,3 +1,4 @@
+
 import { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import QCard from './QCard';
@@ -10,6 +11,7 @@ const GamePage = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const isTransitioning = useRef(false);
+    const timerBarRef = useRef(null);
 
     const { state } = useLocation();
     const { category, difficulty } = state || {};
@@ -34,7 +36,6 @@ const GamePage = () => {
                 if (Array.isArray(data)) {
                     const formattedQuestions = data.map(item => ({
                         text: item.question_text,
-                        // Shuffling the array using shuffleArray to avoid correct answer always being first
                         choices: shuffleArray(item.choices.map(choice => ({
                             text: choice.choice_text,
                             isCorrect: choice.is_correct
@@ -55,39 +56,42 @@ const GamePage = () => {
     }, [category, difficulty]);
 
     const handleTimeUp = () => {
-        if(isTransitioning.current) return;
+        if (isTransitioning.current) return;
         isTransitioning.current = true;
-        if(currentQuestionIndex < questions.length - 1){
+        if (currentQuestionIndex < questions.length - 1) {
             setCurrentQuestionIndex(prev => prev + 1);
-        } else{
-            // End of game
-            navigate('/endpage', { state: {score:score}});
+        } else {
+            navigate('/endpage', { state: { score, category }});
         }
         isTransitioning.current = false;
     };
 
     const handleAnswerClick = (answer) => {
-        if(isTransitioning.current) return;
+        if (isTransitioning.current) return;
         isTransitioning.current = true;
-        if(answer.isCorrect){
-            setScore(score + 5);
+
+        if (answer.isCorrect) {
+            const remainingTime = timerBarRef.current.getTimeLeft(); // Hent resterende tid
+            const totalScore = 5 + remainingTime; // 5 poeng for riktig svar + poeng for resterende tid
+            setScore(score + totalScore);
         }
+
         setTimeout(() => {
-            if(currentQuestionIndex < questions.length - 1){
-                setCurrentQuestionIndex(prevIndex => prevIndex + 1)
+            if (currentQuestionIndex < questions.length - 1) {
+                setCurrentQuestionIndex(prevIndex => prevIndex + 1);
             } else {
-                navigate('/endpage', { state: {score:score}});
+                navigate('/endpage', { state: { score, category }});
             }
             isTransitioning.current = false;
         }, 1000);
     };
 
     // If questions are still loading, display a loading screen
-    if(!questions.length) return <div>Loading question...</div>;
+    if (!questions.length) return <div>Loading question...</div>;
 
-    return(
+    return (
         <div className="main_gamepage">
-            <TimerBar key={currentQuestionIndex} duration={15} onTimeUp={handleTimeUp} />
+            <TimerBar ref={timerBarRef} key={currentQuestionIndex} duration={10} onTimeUp={handleTimeUp} />
             <div className="qcard_container">
                 <QCard 
                     question={questions[currentQuestionIndex].text}

@@ -16,3 +16,16 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+    
+class Leaderboard(models.Model):
+    CATEGORY_CHOICES = [
+        ('science: mathematics', 'Science: Mathematics'),
+        ('geography', 'Geography'),
+        ('general knowledge', 'General Knowledge'),
+    ]
+    username = models.CharField(max_length=100)
+    score = models.IntegerField()
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
+
+    def __str__(self):
+        return f'{self.username} - {self.score} ({self.category})'

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User 
 from django.contrib.auth.password_validation import validate_password
-from .models import Question, Choice
+from .models import Question, Choice, Leaderboard
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True, validators=[validate_password])
@@ -44,3 +44,8 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = ['id', 'question_text', 'difficulty', 'choices']
 
     
+class LeaderboardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Leaderboard 
+        fields = ('username', 'score', 'category')
+

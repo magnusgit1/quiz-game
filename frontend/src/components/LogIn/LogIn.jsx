@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './LogIn.css';
 import { useNavigate } from "react-router-dom";
 import AuthContext from '../AuthContext';
+import UserContext from '../UserContext';
 
 // Component that displays the log-in interface
 // User is able to provide username and password into a form, and submit the input
@@ -15,7 +16,8 @@ const LogIn = ({onLogin}) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { isLoggedIn, logOut, logIn } = useContext(AuthContext);
+    const { logIn } = useContext(AuthContext);
+    const { setUserName } = useContext(UserContext);
 
     // functions to handle events
     const handleUsername = (e) =>{
@@ -63,8 +65,9 @@ const LogIn = ({onLogin}) => {
                 throw new Error(`HTTP error; status: ${response.status}`);
             }
             const data = await response.json();
-            localStorage.setItem('token', data.token);
+            sessionStorage.setItem('token', data.token);
             console.log('Success:', data); // presents the successmsg to the console
+            setUserName(username);
 
             //Declare the user logged in through useContext
             logIn();

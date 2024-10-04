@@ -2,12 +2,12 @@ from django.shortcuts import render
 from rest_framework import status, generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import UserRegistrationSerializer, LoginSerializer, QuestionSerializer
+from .serializers import UserRegistrationSerializer, LoginSerializer, QuestionSerializer, LeaderboardSerializer
 from django.contrib.auth import authenticate
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.models import Token 
 from rest_framework.authentication import TokenAuthentication
-from .models import Question
+from .models import Question, Leaderboard
 import logging
 
 # Set up logging
@@ -77,3 +77,38 @@ class QuestionListAPI(generics.ListAPIView):
             return Response({"detail": "No questions found for the specified category and difficulty"}, status=status.HTTP_404_NOT_FOUND)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+class LeaderboardListCreate(APIView):
+    serializer_class = LeaderboardSerializer 
+
+    def get(self, request, *args, **kwargs):
+        categories = Leaderboard.objects.values_list('category', flat=True).distinct()
+        
+        leaderboard_data = []
+        for category in categories:
+            top_scores = Leaderboard.objects.filter(category=category).order_by('-score')[:3]
+            serializer = LeaderboardSerializer(top_scores, many=True)
+            leaderboard_data.append({
+                'category': category,
+                'scores': serializer.data
+            })
+        
+        return Response(leaderboard_data)
+
+    def post(self, request, *args, **kwargs):
+        userName = request.data.get('userName')
+        score = request.data.get('score')
+        category = request.data.get('category')
+
+        leaderboard = Leaderboard.objects.filter(category=category).order_by('-score')
+
+        if leaderboard.count() < 3 or score > leaderboard.last().score:
+            if leaderboard.count() == 3:
+                leaderboard.last().delete()
+            
+            new_entry = Leaderboard(username=userName, score=score, category=category)
+            new_entry.save()
+            return Response({'status': 'Score added!'}, status=status.HTTP_201_CREATED)
+        
+        return Response({'status': 'Score not high enough.'}, status=status.HTTP_200_OK)
+

@@ -7,12 +7,12 @@ export const AuthProvider = ({ children }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         setIsLoggedIn(!!token);
     }, []);
 
     const logOut = async () => {
-        const token = localStorage.getItem('token');
+        const token = sessionStorage.getItem('token');
         console.log('Logging out with the token:', token);
         try{
             await fetch('http://localhost:8000/api/logout/', {
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
                     'Authorization': `Token ${token}`
                 },
             });
-            localStorage.removeItem('token');
+            sessionStorage.removeItem('token');
             setIsLoggedIn(false);
         } catch(error){
             console.error('Logout failed', error);

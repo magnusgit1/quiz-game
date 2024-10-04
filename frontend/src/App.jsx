@@ -11,12 +11,15 @@ import GamePage from './components/GamePage/GamePage';
 import CategoryPage from './components/GamePage/CategoryPage';
 import DifficultyPage from './components/GamePage/DifficultyPage';
 import EndPage from './components/GamePage/EndPage';
+import LeaderBoard from './components/LeaderBoard/LeaderBoard';
 import { AuthProvider } from './components/AuthContext';
+import { UserProvider } from './components/UserContext';
 
 
 function App() {
 
   return (
+    <UserProvider>
     <AuthProvider>
       <Router>
         <div className='first_page'>
@@ -30,6 +33,9 @@ function App() {
               </Link>
               <Link className='topmenu-item' to='/how-to-play'>
                 <u>How to play</u>
+              </Link>
+              <Link className='topmenu-item' to='/leaderboard'>
+                <u>Leaderboard</u>
               </Link>
               <img src="https://img.freepik.com/premium-vector/quiz-logo-with-speech-bubble-icon_149152-812.jpg"/>
             </nav>
@@ -45,6 +51,7 @@ function App() {
               <Route path='/categorypage' element={<CategoryPage/>} />
               <Route path='/difficultypage' element={<DifficultyPage/>} />
               <Route path='/endpage' element={<EndPage/>} />
+              <Route path='/leaderboard' element={<LeaderBoard/>} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>
@@ -54,6 +61,7 @@ function App() {
         </div>
       </Router>
     </AuthProvider>
+    </UserProvider>
   );
 }
 
