@@ -18,3 +18,5 @@ typing_extensions==4.12.2
 urllib3==2.2.3
 gunicorn
 whitenoise
+dj-database-url
+python-decouple
