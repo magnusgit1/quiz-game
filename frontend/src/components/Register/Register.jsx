@@ -2,7 +2,7 @@ import './Register.css';
 import {useState} from 'react';
 import { ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 // Component for registration of a user account
 // User provides a username, a password and a password-confirmation through the input-fields
@@ -140,6 +140,10 @@ const Register = ({onSignUp}) => {
                         onChange={handlePasswordConfirm}
                         required 
                     />
+                    <div className="accept_policy">
+                        <input type="checkbox" name="consent" required/>
+                        I accept the privacy policy. <Link to='/privacypolicy'>Read our privacy policy</Link>
+                    </div>
                     <div className="reg_btns">
                         <button type="submit">Sign up</button>
                     </div>

@@ -1,0 +1,42 @@
+
+.main_pp{
+    background-color: #ffffff;
+    font:white;
+    display:flex;
+    padding:50px;
+    width:50%;
+    height:110vh;
+    justify-content: center;
+    flex-direction: column;
+    margin:40px;
+    margin-top:-10px;
+    border-radius: 30px;
+    box-shadow: 0 -5px 40px black, 0 5px 40px black;
+}
+
+.main_pp h1{
+    text-align: center;
+    margin-bottom:70px;
+}
+
+.main_pp hr{
+    height:3px;
+    background-color: black;
+    width:100%;
+    margin-bottom:20px;
+    margin-top:-30px;
+}
+
+.return_button{
+    margin-top:20px;
+    float:left;
+    align-items:center;
+    display:flex;
+    justify-content: center;
+    mix-blend-mode: multiply;
+}
+
+.main_pp img{
+    width:26px;
+    height:23px;
+}

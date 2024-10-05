@@ -1,7 +1,7 @@
 
 .form_login{
     font-family:Arial, Helvetica, sans-serif;
-    width:400px;
+    width:50%;
     height:420px;
     display:block;
     align-items: center;
@@ -61,6 +61,7 @@
 
 .return_button{
     float:left;
+    width:100%;
     align-items:center;
     display:flex;
     justify-content: center;

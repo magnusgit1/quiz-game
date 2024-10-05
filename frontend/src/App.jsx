@@ -12,6 +12,7 @@ import CategoryPage from './components/GamePage/CategoryPage';
 import DifficultyPage from './components/GamePage/DifficultyPage';
 import EndPage from './components/GamePage/EndPage';
 import LeaderBoard from './components/LeaderBoard/LeaderBoard';
+import PrivacyPolicy from './components/Register/PrivacyPolicy';
 import { AuthProvider } from './components/AuthContext';
 import { UserProvider } from './components/UserContext';
 
@@ -52,6 +53,7 @@ function App() {
               <Route path='/difficultypage' element={<DifficultyPage/>} />
               <Route path='/endpage' element={<EndPage/>} />
               <Route path='/leaderboard' element={<LeaderBoard/>} />
+              <Route path='/privacypolicy' element={<PrivacyPolicy/>} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>

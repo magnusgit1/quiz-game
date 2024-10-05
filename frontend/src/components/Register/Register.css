@@ -1,11 +1,14 @@
 
 .form_register{
     font-family:Arial, Helvetica, sans-serif;
-    width:400px;
-    height:420px;
+    width:50%;
+    height:600px;
     display:block;
     align-items: center;
     text-align: center;
+    border:1px solid black;
+    border-radius: 10px;
+    padding:10px;
 }
 
 .main_register hr{
@@ -15,6 +18,37 @@
     background:black;
     margin-top:-30px;
     margin-bottom:30px;
+}
+
+.accept_policy {
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    width: 50%;
+    margin-top:20px;
+    display: flex;
+    margin-left:105px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Avmerkingsboks */
+.accept_policy input[type="checkbox"] {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.accept_policy .privacy-link {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.accept_policy .privacy-link:hover {
+    text-decoration: underline;
 }
 
 .form_register input{
@@ -41,7 +75,7 @@
     padding:40px;
     padding-bottom:60px;
     width:60%;
-    height:10cm;
+    height:16cm;
     align-items: center;
     display:flex;
     justify-content: center;
@@ -62,6 +96,8 @@
 
 .return_button{
     float:left;
+    width:100%;
+    margin-top:20px;
     align-items:center;
     display:flex;
     justify-content: center;
