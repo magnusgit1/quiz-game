@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // Utilizing Navigate() to present the different interfaces in the home-page.
 const HomePage = () => {
 
-    const { isLoggedIn, logOut, logIn } = useContext(AuthContext);
+    const { isLoggedIn, logOut } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogOut = async () =>{

@@ -4,6 +4,7 @@ from .views import UserRegistrationView, LoginView, LogoutView, QuestionListAPI,
 
 from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
+# URL-Paths to API
 urlpatterns = [
     path('register/', UserRegistrationView.as_view(), name='user-register'),
     path('auth/', include('dj_rest_auth.urls')),

@@ -13,6 +13,7 @@ import logging
 # Set up logging
 logger = logging.getLogger(__name__)
 
+# Class for registration
 class UserRegistrationView(APIView):
     def post(self, request):
         serializer = UserRegistrationSerializer(data=request.data)
@@ -27,6 +28,7 @@ class UserRegistrationView(APIView):
             logger.debug(f"Invalid data: {serializer.errors}")
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+#Class for login
 class LoginView(APIView):
     def post(self, request):
         serializer = LoginSerializer(data=request.data)
@@ -41,7 +43,8 @@ class LoginView(APIView):
             else:
                 return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
+
+#Class for logout
 class LogoutView(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
@@ -54,7 +57,7 @@ class LogoutView(APIView):
         except Token.DoesNotExist:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
-
+#Class for retrieving questions
 class QuestionListAPI(generics.ListAPIView):
     serializer_class = QuestionSerializer
 
@@ -77,7 +80,8 @@ class QuestionListAPI(generics.ListAPIView):
             return Response({"detail": "No questions found for the specified category and difficulty"}, status=status.HTTP_404_NOT_FOUND)
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
-    
+
+#Class for leaderboard
 class LeaderboardListCreate(APIView):
     serializer_class = LeaderboardSerializer 
 

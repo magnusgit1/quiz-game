@@ -1,5 +1,6 @@
 from django.db import models
 
+#Creating the Questions-table
 class Question(models.Model):
     category = models.CharField(max_length=100, blank=True, null=True)
     question_text = models.CharField(max_length=200)
@@ -8,7 +9,8 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question_text
-    
+
+#Creating the Choice-table
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='choices')
     choice_text = models.CharField(max_length=200)
@@ -16,7 +18,8 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
-    
+
+#Creating the Leaderboard-table
 class Leaderboard(models.Model):
     CATEGORY_CHOICES = [
         ('science: mathematics', 'Science: Mathematics'),

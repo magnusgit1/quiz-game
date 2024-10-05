@@ -40,7 +40,7 @@ const TimerBar = forwardRef(({ duration, onTimeUp }, ref) => {
                 clearInterval(intervalRef.current);
             }
         };
-    }, [duration]);
+    }, [duration], startTimer);
 
     const progressPercentage = (timeLeft / duration) * 100;
 
