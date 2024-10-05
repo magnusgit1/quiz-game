@@ -65,7 +65,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://magnusgit1.github.io/"
+    "https://magnusgit1.github.io"
 ]
 
 ROOT_URLCONF = 'quizBackend.urls'
