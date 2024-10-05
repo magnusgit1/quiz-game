@@ -62,7 +62,7 @@ const Register = ({onSignUp}) => {
         }
         else{
             try{
-                const response = await fetch('http://localhost:8000/api/register/', {
+                const response = await fetch('https://quizbackend-2egv.onrender.com/api/register/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

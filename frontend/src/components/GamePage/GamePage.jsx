@@ -31,7 +31,7 @@ const GamePage = () => {
         console.log(`Fetching questions with category: ${category} and difficulty: ${difficulty}`);
         const fetchQuestions = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/api/questions/?category=${category}&difficulty=${difficulty}`);
+                const response = await fetch(`https://quizbackend-2egv.onrender.com/api/questions/?category=${category}&difficulty=${difficulty}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error; status: ${response.status}`);
                 }

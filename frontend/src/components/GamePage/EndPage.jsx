@@ -28,7 +28,7 @@ const EndPage = () => {
         // Posts to the api with the username and result for the specific category
         const postScore = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/leaderboard/', {
+                const response = await fetch('https://quizbackend-2egv.onrender.com/api/leaderboard/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -44,7 +44,7 @@ const EndPage = () => {
                 console.log('Post Data:', postData);
 
                 // New fetch to look up the current leaderboard after the results may have been posted
-                const fetchResponse = await fetch('http://localhost:8000/api/leaderboard/');
+                const fetchResponse = await fetch('https://quizbackend-2egv.onrender.com/api/leaderboard/');
                 if (!fetchResponse.ok) {
                     throw new Error('Network response was not ok');
                 }

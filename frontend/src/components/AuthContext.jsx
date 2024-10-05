@@ -23,7 +23,7 @@ export const AuthProvider = ({ children }) => {
         const token = sessionStorage.getItem('token');
         console.log('Logging out with the token:', token);
         try{
-            await fetch('http://localhost:8000/api/logout/', {
+            await fetch('https://quizbackend-2egv.onrender.com/api/logout/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
