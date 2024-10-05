@@ -11,7 +11,7 @@ const LeaderBoard = () => {
     useEffect(() => {
         const fetchLeaderBoard = async () => {
             try {
-                const response = await fetch('http://localhost:8000/api/leaderboard/');
+                const response = await fetch('https://quizbackend-2egv.onrender.com/api/leaderboard/');
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
                 }
@@ -38,7 +38,7 @@ const LeaderBoard = () => {
                         <ol>
                             {category.scores.map((entry, idx) => (
                                 <li key={`${entry.username}-${entry.score}`}>
-                                    <span>{entry.username}</span>
+                                    <span>{idx+1}. {entry.username}</span>
                                     <span>{entry.score} p</span>
                                 </li>
                             ))}

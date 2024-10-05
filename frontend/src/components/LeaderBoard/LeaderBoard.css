@@ -48,7 +48,7 @@
 }
 
 .main_leaderboard li span {
-    flex: 1;
+    margin:10px;
     text-align: center;
 }
 

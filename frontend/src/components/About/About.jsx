@@ -15,7 +15,8 @@ const About = () => {
                 applications. In this project specifically, i am focusing on applying my newly developed (and partly self-learned)
                 front-end skills, to create a simple quiz-game-website. I also learned alot about server-side programming, where
                 i implemented authentication-based login-functionality, including registering new accounts, storing high-scores and data
-                configuration aquired from the users with the use of jwt, dj-auth and rest-frameworks from Django in Python.
+                configuration aquired from the users with the use of jwt, dj-auth and rest-frameworks from Django in Python. The app 
+                is deployed in Github-pages, and the serverside together with the database is running live through Render.
                 The learning curve has been rather steep, but i truly enjoy the process, and learn alot from all the mistakes and debugging
                 i stumble upon in the process. <br></br>
 

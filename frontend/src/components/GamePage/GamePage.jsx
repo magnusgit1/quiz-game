@@ -106,7 +106,7 @@ const GamePage = () => {
     };
 
     // If questions are still loading, display a loading screen
-    if (!questions.length) return <div>Loading question...</div>;
+    if (!questions.length) return <div className="loading_question">Loading questions...</div>;
 
     return (
         <div className="main_gamepage">
