@@ -2,6 +2,7 @@
 import './QCard.css';
 import { useState } from 'react';
 
+// Component to display questions along with their choices
 const QCard = ({ question, answers, onAnswerSelected }) => {
     
     const [selectedAnswer, setSelectedAnswer] = useState(null);

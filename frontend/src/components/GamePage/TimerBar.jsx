@@ -1,4 +1,7 @@
-import React, { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
+import { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react';
+
+// Component which displays the bar that represents remaining time for a question
+// Used external sources to help implement the useImperativeHandle, along with the usage of useRef
 
 const TimerBar = forwardRef(({ duration, onTimeUp }, ref) => {
     const [timeLeft, setTimeLeft] = useState(duration);
@@ -50,6 +53,7 @@ const TimerBar = forwardRef(({ duration, onTimeUp }, ref) => {
 
 TimerBar.displayName = 'TimerBar';
 
+// Styling also inspired from external sources
 const styles = {
     container: {
         height: '30px',

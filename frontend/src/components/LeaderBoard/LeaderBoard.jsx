@@ -2,9 +2,12 @@
 import { useEffect, useState } from 'react';
 import './LeaderBoard.css';
 
+// Component to display the leaderboard, includes the 3 different categories, with the top 3 scores.
+
 const LeaderBoard = () => {
     const [leaderBoard, setLeaderBoard] = useState([]);
 
+    // Fetches the data from the api, where the top 3 scores for each category (on hard-mode) are collected and stored in the database
     useEffect(() => {
         const fetchLeaderBoard = async () => {
             try {
@@ -22,6 +25,7 @@ const LeaderBoard = () => {
     }, []);
 
     return (
+        // If leaderboard is empty, simply display a message. Else, display the different ranks with username and score using map
         <div className="main_leaderboard">
             <h1><u>Leaderboard</u></h1>
             {leaderBoard.length === 0 ? (

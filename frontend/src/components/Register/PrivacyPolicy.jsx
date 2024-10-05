@@ -2,6 +2,8 @@
 import './PrivacyPolicy.css';
 import { useNavigate } from 'react-router-dom';
 
+// Component to display the privacy policy when user wants to read in the register-component.
+
 const PrivacyPolicy = () => {
 
     const navigate = useNavigate();

@@ -11,7 +11,11 @@ const GamePage = () => {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [score, setScore] = useState(0);
     const [isQuizFinished, setIsQuizFinished] = useState(false);
+
+    // To avoid simoultanious function-calls
     const isTransitioning = useRef(false);
+
+    // useRef to collect remaining time from TimerBar
     const timerBarRef = useRef(null);
 
     const { state } = useLocation();
@@ -37,12 +41,16 @@ const GamePage = () => {
                 if (Array.isArray(data)) {
                     const formattedQuestions = data.map(item => ({
                         text: item.question_text,
+                        // Randomize the choice-orders
                         choices: shuffleArray(item.choices.map(choice => ({
                             text: choice.choice_text,
                             isCorrect: choice.is_correct
                         })))
                     }));
+
+                    // first find questions where the corresponding choices are actually present (>0)
                     const validQuestions = formattedQuestions.filter(q => q.choices && q.choices.length > 0);
+                    // Then shuffle the questions so that it will always be in random order 
                     const randomQuestions = shuffleArray(validQuestions).slice(0, 10);
                     setQuestions(randomQuestions);
                 } else {
@@ -62,6 +70,8 @@ const GamePage = () => {
         }
     }, [isQuizFinished, navigate, score, category, difficulty]);
 
+    // Handles the case where an answer is not clicked and the timer runs out
+    // Uses transitioning.current to make sure both handleanswerclick and handletimeup does not occur simoultaniously
     const handleTimeUp = () => {
         if (isTransitioning.current) return;
         isTransitioning.current = true;
@@ -73,17 +83,18 @@ const GamePage = () => {
         isTransitioning.current = false;
     };
 
+    // Handles the action of the player clicking an answer
     const handleAnswerClick = (answer) => {
         if (isTransitioning.current) return;
         isTransitioning.current = true;
 
         if (answer.isCorrect) {
-            const remainingTime = timerBarRef.current.getTimeLeft(); // Hent resterende tid
-            const totalScore = 5 + remainingTime; // 5 poeng for riktig svar + poeng for resterende tid
-            setScore(prevScore => prevScore + totalScore); // Oppdater score
+            const remainingTime = timerBarRef.current.getTimeLeft(); // Get remaining time
+            const totalScore = 5 + remainingTime; // 5 points for correct answers, plus the remaining time in seconds (int) as points
+            setScore(prevScore => prevScore + totalScore); // update the score
         }
 
-        // Vent 1 sekund før du går til neste spørsmål eller naviger til endpage
+        // Wait 1 second before displaying the EndPage
         setTimeout(() => {
             if (currentQuestionIndex < questions.length - 1) {
                 setCurrentQuestionIndex(prevIndex => prevIndex + 1);

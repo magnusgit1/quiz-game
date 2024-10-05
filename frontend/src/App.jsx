@@ -16,6 +16,7 @@ import PrivacyPolicy from './components/Register/PrivacyPolicy';
 import { AuthProvider } from './components/AuthContext';
 import { UserProvider } from './components/UserContext';
 
+// Main app, includes Router to use navigate throughout the components.
 
 function App() {
 

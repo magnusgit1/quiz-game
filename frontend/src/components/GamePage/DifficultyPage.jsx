@@ -6,6 +6,8 @@ import './DifficultyPage.css';
 
 const DifficultyPage = () => {
 
+    // Get category from previous location using state
+    
     const { state } = useLocation();
     const { chosenCategory } = state;
     const navigate = useNavigate();

@@ -1,9 +1,8 @@
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
+// UserContext for the username to be accessed by other component.
 const UserContext = createContext();
-
-export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) =>{
     const [userName, setUserName] = useState('');
