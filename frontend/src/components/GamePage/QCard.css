@@ -57,6 +57,12 @@
     transition:background-color 0.3s ease;
 }
 
+@media (prefer-color-scheme: dark){
+    .choice_btn{
+        color:black;
+    }
+}
+
 .choice_btn.correct{
     background-color:green;
     color:white;
