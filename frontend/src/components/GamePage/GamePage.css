@@ -13,9 +13,13 @@
     box-sizing: border-box;
 }
 
-@media (prefer-color-scheme: dark){
-    q.card_container{
+@media (prefers-color-scheme: dark){
+    .qcard_container{
         color:black;
+    }
+
+    .main_gamepage{
+        color: black;
     }
 }
 
