@@ -13,13 +13,10 @@
     box-sizing: border-box;
 }
 
+/* this styling is used to take dark themes into consideration */
 @media (prefers-color-scheme: dark){
     .qcard_container{
         color:black;
-    }
-
-    .main_gamepage{
-        color: black;
     }
 }
 

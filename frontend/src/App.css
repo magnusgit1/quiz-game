@@ -57,10 +57,10 @@ html, body {
 }
 
 .topmenu img{
-    display:flex;
-    float:right;
-    width:15%;
-    margin-top:-40px;
+    position:absolute;
+    width:250px;
+    top:-13px;
+    right:30px;
     mix-blend-mode: multiply;
 }
 
