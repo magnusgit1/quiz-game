@@ -48,6 +48,19 @@
 }
 
 @media (max-width: 768px) { 
+    .diff_btns{
+        flex-direction: column;
+        height:40%;
+        padding-bottom:10px;
+    }
+
+    .main_difficultypage{
+        height:12cm;
+    }
+
+    .diff_btn{
+        margin-top:10px;
+    }
 
 
 }
