@@ -44,4 +44,10 @@
     color:white;
 }
 
+@media (max-width: 768px) { 
+    .main_gamepage{
+        width:90%;
+        height:20cm;
+    }
+}
 

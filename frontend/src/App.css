@@ -85,3 +85,15 @@ html, body {
     width:100%;
     height:3.8cm;
 }
+
+@media (max-width: 768px) { 
+    .topmenu img{
+        display:none;
+    }
+    .topmenu-item{
+        font-size:16px;
+    }
+    .topmenu{
+        height:2cm;
+    }
+}

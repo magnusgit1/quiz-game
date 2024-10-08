@@ -26,3 +26,9 @@
     margin-top: -10px;
     margin-bottom:40px;
 }
+
+@media (max-width: 768px) { 
+    .main_about{
+        width:80%;
+    }
+}

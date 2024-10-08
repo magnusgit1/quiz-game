@@ -37,3 +37,9 @@
     width:26px;
     height:23px;
 }
+
+@media (max-width: 768px) { 
+    .main_pp{
+        height:130vh;
+    }
+}

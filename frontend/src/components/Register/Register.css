@@ -104,6 +104,14 @@
     justify-content: center;
 }
 
+.reg_btns{
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items: center;
+    justify-content: center;
+}
+
 @media (prefers-color-scheme: dark){
     .return_button{
         background: white;
@@ -116,10 +124,14 @@
     }
 }
 
-.reg_btns{
-    display:flex;
-    flex-direction: column;
-    width:100%;
-    align-items: center;
-    justify-content: center;
+
+@media (max-width: 768px) {
+    .form_register{
+        width:80%;
+    }
+
+    .main_register{
+        width:70%;
+        height:19cm;
+    }
 }
