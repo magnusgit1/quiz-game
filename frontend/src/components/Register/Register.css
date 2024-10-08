@@ -128,10 +128,12 @@
 @media (max-width: 768px) {
     .form_register{
         width:80%;
+        height:100%;
+        margin-top: -90px;
     }
 
     .main_register{
         width:70%;
-        height:19cm;
+        height:20cm;
     }
 }
