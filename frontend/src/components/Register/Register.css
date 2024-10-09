@@ -9,7 +9,7 @@
     padding-right:50px;
     border-left:2px solid black;
     border-right:2px solid black;
-    max-height: 100vh;
+    max-height: 90vh;
 }
 
 .main_register hr{
@@ -135,6 +135,9 @@
 
     .main_register{
         width:70%;
-        height:22cm;
+        height:21cm;
+    }
+    .form_register label{
+        width:70%;
     }
 }
