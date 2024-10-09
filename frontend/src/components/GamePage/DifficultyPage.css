@@ -55,7 +55,11 @@
     }
 
     .main_difficultypage{
-        height:12cm;
+        height:15cm;
+    }
+
+    .main_difficultypage h1{
+        margin-top:30px;
     }
 
     .diff_btn{
