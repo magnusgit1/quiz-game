@@ -6,7 +6,7 @@
     padding:50px;
     padding-top:0;
     width:50%;
-    height:100vh;
+    height:120vh;
     justify-content: center;
     flex-direction: column;
     margin:40px;
@@ -40,6 +40,7 @@
 
 @media (max-width: 768px) { 
     .main_pp{
-        height:170vh;
+        height:160vh;
+        width:70%;
     }
 }

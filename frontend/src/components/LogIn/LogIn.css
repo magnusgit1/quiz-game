@@ -39,7 +39,7 @@
 .main_login{
     background-color: rgb(139, 135, 221);
     padding:40px;
-    width:60%;
+    width:40%;
     height:9cm;
     align-items: center;
     display:flex;
@@ -60,7 +60,6 @@
 }
 
 .return_button{
-    float:left;
     width:100%;
     align-items:center;
     display:flex;
@@ -91,5 +90,6 @@
 
     .main_login{
         height:12cm;
+        width:70%;
     }
 }
