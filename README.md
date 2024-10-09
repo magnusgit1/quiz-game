@@ -2,6 +2,7 @@
 # Quizorama - https://magnusgit1.github.io/quiz-game/
 
 --- A quiz-game application website where you can create accounts, test your quiz-skills, and store scores in a leaderboard.
+
 --- Tech-stack: React.js w/JS, CSS, HTML, Python w/Django, postgreSQL.
 
 ## How to use
