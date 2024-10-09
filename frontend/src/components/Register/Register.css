@@ -135,9 +135,13 @@
 
     .main_register{
         width:70%;
-        height:21cm;
+        height:20cm;
     }
     .form_register label{
-        width:70%;
+        width:60%;
+    }
+
+    .main_register h1{
+        font-size:30px;
     }
 }
