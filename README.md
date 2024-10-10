@@ -11,8 +11,11 @@
 2. The servers are deployed using Render's services, and the app can therefore be used freely without any installations or configurations. It may however be slow on the first data-request,
    as it uses Render's free services. After the first request however, the app should run smoothly.
 4. If you want to download the sourcecode and run it locally instead, then:
+   
    --- Clone the repo with: git clone https://github.com/magnusgit1/quiz-game.git
+   
    --- Install packages using: npm install
+   
    --- Run the app using npm start / npm run dev
 
 
