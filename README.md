@@ -16,6 +16,6 @@
    
    --- Install packages using: npm install
    
-   --- Run the app using npm start / npm run dev
+   --- Run the app using: npm start / npm run dev
 
 
